@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ReportController;
 use App\Models\Report;
@@ -28,4 +29,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/reports/create', [ReportController::class, 'create'])->name('reports.create');
     Route::post('/reports', [ReportController::class, 'store'])->name('reports.store');
     Route::post('/reports/{report}/feedback', [ReportController::class, 'feedback'])->name('reports.feedback');
+
+    Route::get('/admin/reports', [AdminController::class, 'index'])->name('admin.reports.index');
+    Route::patch('/admin/reports/{report}/status', [AdminController::class, 'updateStatus'])->name('admin.reports.status');
 });

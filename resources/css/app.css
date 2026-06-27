@@ -439,6 +439,101 @@ img {
     color: var(--color-muted);
 }
 
+.admin-heading {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 24px;
+}
+
+.filter-form {
+    width: min(100%, 280px);
+}
+
+.admin-report-list {
+    display: grid;
+    gap: 18px;
+}
+
+.admin-report {
+    display: grid;
+    gap: 18px;
+    padding: 22px;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    background: var(--color-surface);
+    box-shadow: 0 10px 28px rgba(15, 23, 42, 0.07);
+}
+
+.admin-report-header {
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.admin-report-header h2 {
+    margin: 6px 0 0;
+    color: #172033;
+    font-size: 22px;
+}
+
+.report-id {
+    color: var(--color-primary);
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.admin-report-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+    margin: 0;
+}
+
+.admin-report-grid div {
+    padding: 14px;
+    border-radius: 8px;
+    background: #f8fafc;
+}
+
+.admin-report-grid dt {
+    margin-bottom: 6px;
+    color: var(--color-muted);
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.admin-report-grid dd {
+    margin: 0;
+    color: var(--color-text);
+    overflow-wrap: anywhere;
+}
+
+.status-form {
+    display: grid;
+    grid-template-columns: minmax(220px, 320px) auto;
+    gap: 14px;
+    align-items: end;
+    padding-top: 16px;
+    border-top: 1px solid var(--color-border);
+}
+
+.pagination-wrap {
+    margin-top: 24px;
+}
+
+.pagination-wrap nav {
+    display: grid;
+    gap: 10px;
+}
+
+.pagination-wrap a,
+.pagination-wrap span {
+    border-radius: 8px;
+}
+
 .hero-section {
     padding: 58px 0 72px;
 }
@@ -657,5 +752,24 @@ img {
         grid-row: auto;
         grid-column: 1;
         justify-self: start;
+    }
+
+    .admin-heading,
+    .admin-report-header {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .filter-form {
+        width: 100%;
+    }
+
+    .admin-report-grid,
+    .status-form {
+        grid-template-columns: 1fr;
+    }
+
+    .status-form .secondary-action {
+        width: 100%;
     }
 }
