@@ -53,6 +53,7 @@
                 <label class="form-field">
                     <span>Телефон</span>
                     <input type="tel" name="phone" value="{{ old('phone') }}" placeholder="+79853195062" required>
+                    <small class="field-hint">Можно вводить в удобном формате, главное оставить номер для связи.</small>
                     @error('phone')
                         <small class="field-error">{{ $message }}</small>
                     @enderror

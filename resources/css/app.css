@@ -124,6 +124,11 @@ img {
     outline: none;
 }
 
+.nav-link-active {
+    color: var(--color-primary);
+    background: #eff6ff;
+}
+
 .nav-link-accent,
 .primary-action {
     color: #ffffff;
@@ -244,6 +249,11 @@ img {
     font-weight: 600;
 }
 
+.field-hint {
+    color: var(--color-muted);
+    font-size: 13px;
+}
+
 .form-submit {
     width: 100%;
     border: 0;
@@ -266,6 +276,19 @@ img {
 .form-link-text a:focus-visible {
     color: var(--color-primary-dark);
     outline: none;
+}
+
+.error-card {
+    text-align: center;
+}
+
+.error-card .primary-action {
+    margin-top: 18px;
+}
+
+.error-text {
+    margin: 0;
+    color: var(--color-muted);
 }
 
 .success-message {

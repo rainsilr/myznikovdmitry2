@@ -15,17 +15,17 @@
             </a>
 
             <nav class="main-nav" aria-label="Основная навигация">
-                <a href="/" class="nav-link">Главная</a>
+                <a href="/" class="nav-link @if(request()->routeIs('home')) nav-link-active @endif">Главная</a>
 
                 @guest
-                    <a href="/login" class="nav-link">Вход</a>
-                    <a href="/register" class="nav-link nav-link-accent">Регистрация</a>
+                    <a href="/login" class="nav-link @if(request()->routeIs('login')) nav-link-active @endif">Вход</a>
+                    <a href="/register" class="nav-link nav-link-accent @if(request()->routeIs('register')) nav-link-active @endif">Регистрация</a>
                 @else
                     @if (auth()->user()->role === 'admin')
-                        <a href="/admin/reports" class="nav-link">Админ-панель</a>
+                        <a href="/admin/reports" class="nav-link @if(request()->routeIs('admin.*')) nav-link-active @endif">Админ-панель</a>
                     @else
-                        <a href="/reports/create" class="nav-link">Создать заявку</a>
-                        <a href="/reports" class="nav-link">Мои заявки</a>
+                        <a href="/reports/create" class="nav-link @if(request()->routeIs('reports.create')) nav-link-active @endif">Создать заявку</a>
+                        <a href="/reports" class="nav-link @if(request()->routeIs('reports.index')) nav-link-active @endif">Мои заявки</a>
                     @endif
 
                     <form action="/logout" method="post" class="logout-form">
