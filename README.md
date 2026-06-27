@@ -50,6 +50,17 @@ php artisan serve
 - Логин: `admin`
 - Пароль: `adm123`
 
+## Тестовые заявки
+
+После `php artisan migrate:fresh --seed` в базе уже есть несколько демонстрационных заявок.
+Если нужно быстро добавить больше заявок для проверки пагинации, фильтрации и смены статусов в админ-панели, выполните:
+
+```bash
+php artisan tinker --execute='$user=\App\Models\User::where("role","user")->first(); $categories=\App\Models\Category::all(); for($i=1;$i<=30;$i++){ \App\Models\Report::create(["user_id"=>$user->id,"category_id"=>$categories->random()->id,"title"=>"Тестовая заявка #".$i,"description"=>"Описание тестовой заявки для проверки пагинации, фильтрации и смены статусов.","status"=>collect(["new","resolved","rejected"])->random(),"date_incident"=>now()->subDays(rand(0,20))->format("Y-m-d"),"contact"=>collect(["email","sms"])->random()]); }'
+```
+
+После выполнения команды зайдите под администратором на `/admin/reports`.
+
 ## Основные возможности
 
 - Регистрация и авторизация пользователей.
