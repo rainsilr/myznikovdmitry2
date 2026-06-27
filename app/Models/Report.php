@@ -37,4 +37,16 @@ class Report extends Model
     {
         return $this->belongsTo(Category::class);
     }
+
+    /**
+     * Возвращает русский текст статуса для вывода в интерфейсе.
+     */
+    public function statusLabel(): string
+    {
+        return match ($this->status) {
+            'resolved' => 'Решено',
+            'rejected' => 'Отклонено',
+            default => 'Новое',
+        };
+    }
 }

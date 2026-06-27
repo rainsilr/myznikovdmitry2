@@ -12,6 +12,21 @@ use Illuminate\View\View;
 class ReportController extends Controller
 {
     /**
+     * Показывает только заявления текущего пользователя.
+     */
+    public function index(Request $request): View
+    {
+        return view('reports.index', [
+            'reports' => $request->user()
+                ->reports()
+                ->with('category')
+                ->latest()
+                ->get(),
+            'resolvedReportsCount' => $this->resolvedReportsCount(),
+        ]);
+    }
+
+    /**
      * Показывает форму создания заявления для авторизованного пользователя.
      */
     public function create(): View
@@ -54,6 +69,27 @@ class ReportController extends Controller
         return redirect()
             ->route('reports.create')
             ->with('success', 'Заявление отправлено.');
+    }
+
+    /**
+     * Сохраняет отзыв только для решенного заявления владельца.
+     */
+    public function feedback(Request $request, Report $report): RedirectResponse
+    {
+        abort_unless($report->user_id === $request->user()->id, 403);
+        abort_unless($report->status === 'resolved', 403);
+
+        $validated = $request->validate([
+            'feedback' => ['required', 'string', 'max:2000'],
+        ]);
+
+        $report->update([
+            'feedback' => $validated['feedback'],
+        ]);
+
+        return redirect()
+            ->route('reports.index')
+            ->with('success', 'Отзыв сохранен.');
     }
 
     /**
