@@ -474,17 +474,17 @@ img {
 
 .admin-report-list {
     display: grid;
-    gap: 18px;
+    gap: 14px;
 }
 
 .admin-report {
     display: grid;
-    gap: 18px;
-    padding: 22px;
+    gap: 14px;
+    padding: 18px;
     border: 1px solid var(--color-border);
     border-radius: 8px;
     background: var(--color-surface);
-    box-shadow: 0 10px 28px rgba(15, 23, 42, 0.07);
+    box-shadow: 0 8px 22px rgba(15, 23, 42, 0.06);
 }
 
 .admin-report-header {
@@ -497,7 +497,8 @@ img {
 .admin-report-header h2 {
     margin: 6px 0 0;
     color: #172033;
-    font-size: 22px;
+    font-size: 20px;
+    line-height: 1.25;
 }
 
 .report-id {
@@ -508,13 +509,13 @@ img {
 
 .admin-report-grid {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 14px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
     margin: 0;
 }
 
 .admin-report-grid div {
-    padding: 14px;
+    padding: 12px;
     border-radius: 8px;
     background: #f8fafc;
 }
@@ -533,12 +534,16 @@ img {
     overflow-wrap: anywhere;
 }
 
+.admin-report-description {
+    grid-column: 1 / -1;
+}
+
 .status-form {
     display: grid;
-    grid-template-columns: minmax(220px, 320px) auto;
-    gap: 14px;
+    grid-template-columns: minmax(220px, 300px) auto;
+    gap: 12px;
     align-items: end;
-    padding-top: 16px;
+    padding-top: 12px;
     border-top: 1px solid var(--color-border);
 }
 
@@ -546,14 +551,59 @@ img {
     margin-top: 24px;
 }
 
-.pagination-wrap nav {
-    display: grid;
-    gap: 10px;
+.pagination {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
 }
 
-.pagination-wrap a,
-.pagination-wrap span {
+.pagination-summary {
+    margin: 0;
+    color: var(--color-muted);
+    font-weight: 600;
+}
+
+.pagination-pages {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.pagination-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 40px;
+    min-height: 38px;
+    padding: 8px 12px;
+    border: 1px solid var(--color-border);
     border-radius: 8px;
+    color: var(--color-primary);
+    background: #ffffff;
+    font-weight: 700;
+    transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.pagination-link:hover,
+.pagination-link:focus-visible {
+    color: #ffffff;
+    border-color: var(--color-primary);
+    background: var(--color-primary);
+    outline: none;
+}
+
+.pagination-current {
+    color: #ffffff;
+    border-color: var(--color-primary);
+    background: var(--color-primary);
+}
+
+.pagination-disabled {
+    color: #94a3b8;
+    background: #f8fafc;
+    pointer-events: none;
 }
 
 .hero-section {

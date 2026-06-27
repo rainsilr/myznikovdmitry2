@@ -28,7 +28,7 @@
                 <div class="success-message" role="status">{{ session('success') }}</div>
             @endif
 
-            <div class="admin-report-list">
+            <div class="admin-report-list admin-report-list-compact">
                 @forelse ($reports as $report)
                     <article class="admin-report">
                         <header class="admin-report-header">
@@ -58,7 +58,7 @@
                                     @endif
                                 </dd>
                             </div>
-                            <div>
+                            <div class="admin-report-description">
                                 <dt>Описание</dt>
                                 <dd>{{ \Illuminate\Support\Str::limit($report->description, 160) }}</dd>
                             </div>
