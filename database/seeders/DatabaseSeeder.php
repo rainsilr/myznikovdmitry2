@@ -49,13 +49,13 @@ class DatabaseSeeder extends Seeder
             [
                 'login' => 'ivanov',
                 'fio' => 'Иванов Иван Иванович',
-                'phone' => '+79850000001',
+                'phone' => '+7(985)000-00-01',
                 'email' => 'ivanov@example.ru',
             ],
             [
                 'login' => 'petrova',
                 'fio' => 'Петрова Анна Сергеевна',
-                'phone' => '+79850000002',
+                'phone' => '+7(985)000-00-02',
                 'email' => 'petrova@example.ru',
             ],
         ];

@@ -67,10 +67,11 @@ class AuthController extends Controller
             'login' => ['required', 'string', 'min:4', 'regex:/^[A-Za-z0-9]+$/', 'unique:users,login'],
             'email' => ['required', 'email', 'unique:users,email'],
             'password' => ['required', Password::min(6)],
-            'phone' => ['required', 'string'],
+            'phone' => ['required', 'regex:/^\+7\(\d{3}\)\d{3}-\d{2}-\d{2}$/'],
         ], [
             'fio.regex' => 'ФИО должно состоять ровно из 3 слов кириллицей. Допускаются пробелы и дефисы.',
             'login.regex' => 'Логин может содержать только латиницу и цифры.',
+            'phone.regex' => 'Телефон должен быть в формате +7(XXX)XXX-XX-XX.',
             'unique' => 'Такое значение уже используется.',
         ]);
 

@@ -36,6 +36,56 @@ if (slider) {
 }
 
 const forms = document.querySelectorAll('[data-client-form]');
+const phoneFields = document.querySelectorAll('[data-phone-mask]');
+
+const formatPhone = (value) => {
+    let digits = value.replace(/\D/g, '');
+
+    if (digits.startsWith('8')) {
+        digits = `7${digits.slice(1)}`;
+    }
+
+    if (!digits.startsWith('7')) {
+        digits = `7${digits}`;
+    }
+
+    digits = digits.slice(0, 11);
+
+    const code = digits.slice(1, 4);
+    const first = digits.slice(4, 7);
+    const second = digits.slice(7, 9);
+    const third = digits.slice(9, 11);
+
+    let formatted = '+7';
+
+    if (code) {
+        formatted += `(${code}`;
+    }
+
+    if (code.length === 3) {
+        formatted += ')';
+    }
+
+    if (first) {
+        formatted += first;
+    }
+
+    if (second) {
+        formatted += `-${second}`;
+    }
+
+    if (third) {
+        formatted += `-${third}`;
+    }
+
+    return formatted;
+};
+
+phoneFields.forEach((field) => {
+    field.addEventListener('input', () => {
+        field.value = formatPhone(field.value);
+    });
+});
 
 forms.forEach((form) => {
     form.addEventListener('submit', (event) => {
@@ -60,8 +110,8 @@ forms.forEach((form) => {
                 message = 'ФИО должно состоять ровно из 3 слов кириллицей.';
             } else if (field.dataset.pattern === 'login' && !/^[A-Za-z0-9]+$/.test(value)) {
                 message = 'Логин может содержать только латиницу и цифры.';
-            } else if (field.dataset.pattern === 'date' && !/^\d{2}\.\d{2}\.\d{4}$/.test(value)) {
-                message = 'Дата должна быть в формате ДД.ММ.ГГГГ.';
+            } else if (field.dataset.pattern === 'phone' && !/^\+7\(\d{3}\)\d{3}-\d{2}-\d{2}$/.test(value)) {
+                message = 'Телефон должен быть в формате +7(XXX)XXX-XX-XX.';
             }
 
             if (message) {

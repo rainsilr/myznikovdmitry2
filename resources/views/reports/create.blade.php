@@ -40,7 +40,7 @@
 
                 <label class="form-field">
                     <span>Дата нарушения</span>
-                    <input type="text" name="date_incident" value="{{ old('date_incident', $currentDate) }}" placeholder="ДД.ММ.ГГГГ" data-pattern="date" required>
+                    <input type="date" name="date_incident" value="{{ old('date_incident', $currentDate) }}" required>
                     @error('date_incident')
                         <small class="field-error">{{ $message }}</small>
                     @enderror

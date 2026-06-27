@@ -33,7 +33,7 @@ class ReportController extends Controller
     {
         return view('reports.create', [
             'categories' => Category::orderBy('name')->get(),
-            'currentDate' => now()->format('d.m.Y'),
+            'currentDate' => now()->format('Y-m-d'),
             'resolvedReportsCount' => $this->resolvedReportsCount(),
         ]);
     }
@@ -47,11 +47,11 @@ class ReportController extends Controller
             'title' => ['required', 'string', 'max:255'],
             'category_id' => ['required', 'exists:categories,id'],
             'description' => ['required', 'string'],
-            'date_incident' => ['required', 'date_format:d.m.Y'],
+            'date_incident' => ['required', 'date'],
             'contact' => ['required', 'in:email,sms'],
         ], [
             'category_id.exists' => 'Выберите категорию из списка.',
-            'date_incident.date_format' => 'Дата должна быть в формате ДД.ММ.ГГГГ.',
+            'date_incident.date' => 'Выберите корректную дату нарушения.',
             'contact.in' => 'Выберите способ обратной связи.',
         ]);
 
@@ -61,7 +61,7 @@ class ReportController extends Controller
             'category_id' => $validated['category_id'],
             'title' => $validated['title'],
             'description' => $validated['description'],
-            'date_incident' => Carbon::createFromFormat('d.m.Y', $validated['date_incident'])->format('Y-m-d'),
+            'date_incident' => Carbon::parse($validated['date_incident'])->format('Y-m-d'),
             'contact' => $validated['contact'],
             'status' => 'new',
         ]);

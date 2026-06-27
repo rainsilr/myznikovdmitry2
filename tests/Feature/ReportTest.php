@@ -25,7 +25,7 @@ class ReportTest extends TestCase
             'title' => 'Яма возле дома',
             'category_id' => $category->id,
             'description' => 'На дороге появилась глубокая яма.',
-            'date_incident' => '27.06.2026',
+            'date_incident' => '2026-06-27',
             'contact' => 'email',
         ]);
 
