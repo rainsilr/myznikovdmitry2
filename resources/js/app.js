@@ -60,8 +60,8 @@ forms.forEach((form) => {
                 message = 'ФИО должно состоять ровно из 3 слов кириллицей.';
             } else if (field.dataset.pattern === 'login' && !/^[A-Za-z0-9]+$/.test(value)) {
                 message = 'Логин может содержать только латиницу и цифры.';
-            } else if (field.dataset.pattern === 'phone' && !/^\+7\(\d{3}\)\d{3}-\d{2}-\d{2}$/.test(value)) {
-                message = 'Телефон должен быть в формате +7(XXX)XXX-XX-XX.';
+            } else if (field.dataset.pattern === 'date' && !/^\d{2}\.\d{2}\.\d{4}$/.test(value)) {
+                message = 'Дата должна быть в формате ДД.ММ.ГГГГ.';
             }
 
             if (message) {

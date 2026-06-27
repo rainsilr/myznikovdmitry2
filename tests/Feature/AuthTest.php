@@ -22,13 +22,14 @@ class AuthTest extends TestCase
             'login' => 'ivan123',
             'email' => 'ivan@example.ru',
             'password' => 'secret1',
-            'phone' => '+7(999)123-45-67',
+            'phone' => '+79853195062',
         ]);
 
         $response->assertRedirect('/');
         $this->assertAuthenticated();
         $this->assertDatabaseHas('users', [
             'login' => 'ivan123',
+            'phone' => '+79853195062',
             'role' => 'user',
         ]);
     }

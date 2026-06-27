@@ -52,7 +52,7 @@
 
                 <label class="form-field">
                     <span>Телефон</span>
-                    <input type="tel" name="phone" value="{{ old('phone') }}" placeholder="+7(999)123-45-67" data-pattern="phone" required>
+                    <input type="tel" name="phone" value="{{ old('phone') }}" placeholder="+79853195062" required>
                     @error('phone')
                         <small class="field-error">{{ $message }}</small>
                     @enderror
