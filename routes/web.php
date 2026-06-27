@@ -3,14 +3,17 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ReportController;
+use App\Models\Category;
 use App\Models\Report;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     // Счетчик решенных заявлений выводится в подвале на каждой странице.
     $resolvedReportsCount = Report::where('status', 'resolved')->count();
+    $reportsCount = Report::count();
+    $categories = Category::orderBy('name')->get();
 
-    return view('home', compact('resolvedReportsCount'));
+    return view('home', compact('resolvedReportsCount', 'reportsCount', 'categories'));
 })->name('home');
 
 Route::middleware('guest')->group(function () {

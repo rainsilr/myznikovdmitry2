@@ -13,6 +13,21 @@
                     и видеть актуальный статус обработки.
                 </p>
                 <a href="/reports/create" class="primary-action">Отправить заявление</a>
+
+                <dl class="hero-stats" aria-label="Статистика обращений">
+                    <div>
+                        <dt>{{ $reportsCount }}</dt>
+                        <dd>заявлений всего</dd>
+                    </div>
+                    <div>
+                        <dt>{{ $resolvedReportsCount }}</dt>
+                        <dd>проблем решено</dd>
+                    </div>
+                    <div>
+                        <dt>{{ $categories->count() }}</dt>
+                        <dd>категорий</dd>
+                    </div>
+                </dl>
             </div>
 
             <section class="slider" aria-label="Фотографии городских проблем">
@@ -35,6 +50,25 @@
                     ›
                 </button>
             </section>
+        </div>
+    </section>
+
+    <section class="home-info-section" aria-labelledby="categories-title">
+        <div class="container home-info-grid">
+            <div class="home-info-text">
+                <p class="eyebrow">Что можно отправить</p>
+                <h2 id="categories-title">Категории городских проблем</h2>
+                <p>
+                    Выберите подходящую категорию при создании заявления. Это помогает быстрее направить
+                    обращение на обработку и корректно отследить статус.
+                </p>
+            </div>
+
+            <div class="category-cloud" aria-label="Список категорий">
+                @foreach ($categories as $category)
+                    <span>{{ $category->name }}</span>
+                @endforeach
+            </div>
         </div>
     </section>
 @endsection
