@@ -62,6 +62,10 @@
                                 <dt>Описание</dt>
                                 <dd>{{ \Illuminate\Support\Str::limit($report->description, 160) }}</dd>
                             </div>
+                            <div class="admin-report-description">
+                                <dt>Отзыв пользователя</dt>
+                                <dd>{{ $report->feedback ?: 'Отзыв пока не оставлен' }}</dd>
+                            </div>
                         </dl>
 
                         <form
